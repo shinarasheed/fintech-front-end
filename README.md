@@ -15,7 +15,7 @@
 
 ## Description
 Introducing E-payment, an innovative modern bills and Mobile Payments template. This can be used for apps such as bills payment, online payment, online electricity bill payments among others. Built using the recommended best practices for ES6 and React Native, the template gives a very rich native feel and optimized for fast responsiveness. It is a modern-based and easily customizable App template.
-
+The backend is available [here](https://github.com/jamesmogambi/payment-backend/).
 
 
 ## Live Demo
