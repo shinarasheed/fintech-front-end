@@ -40,7 +40,13 @@ Here is a working live demo :
 ![Services](https://user-images.githubusercontent.com/31744209/105504710-24345480-5cd9-11eb-8e78-85cc968b8748.png)
 
 ### Pay/Send Screen
-![PaymentForm](https://user-images.githubusercontent.com/31744209/105504850-4cbc4e80-5cd9-11eb-9caa-7af0e08c86d2.png)
+![paymentForm-1](https://user-images.githubusercontent.com/31744209/107765090-4c482e00-6d42-11eb-9b86-d183f6e1d80e.png)
+
+### Pay/Send Screen
+![paymentForm-2](https://user-images.githubusercontent.com/31744209/107765092-4ce0c480-6d42-11eb-9969-d27d42610d50.png)
+
+### Pay/Send Screen
+![paymentForm-3](https://user-images.githubusercontent.com/31744209/107765086-4b170100-6d42-11eb-9828-83710a4cef54.png)
 
 ### M-PESA STK  Screen
 ![mpesastk](https://user-images.githubusercontent.com/31744209/105505227-c05e5b80-5cd9-11eb-96a6-0a4b002fe24e.png)
@@ -49,10 +55,11 @@ Here is a working live demo :
 ![Categories](https://user-images.githubusercontent.com/31744209/105506076-b557fb00-5cda-11eb-84f9-97576fc84683.png)
 
 ### Payment History  Screen
-![paymentHistory](https://user-images.githubusercontent.com/31744209/105505595-31057800-5cda-11eb-900d-89af28b0d768.png)
+![paymentHistory](https://user-images.githubusercontent.com/31744209/107766853-2e2ffd00-6d45-11eb-8ffd-d093b9f12c35.png)
 
 ### Transaction  Screen
-![transaction](https://user-images.githubusercontent.com/31744209/105505769-68742480-5cda-11eb-969a-f75834aae018.png)
+![transaction](https://user-images.githubusercontent.com/31744209/107764025-87496200-6d40-11eb-941a-c7cfd4cd9544.png)
+
 
 
 
