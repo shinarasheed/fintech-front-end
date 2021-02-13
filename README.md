@@ -1,6 +1,8 @@
-# E-Payment
+# E-Pay
 
 > Mobile payment application.
+
+![icon](https://user-images.githubusercontent.com/31744209/107847435-9d1c5d00-6dfc-11eb-9975-a1698c324073.png)
 
 ## Table of contents
 * [Description](#description)
@@ -26,7 +28,8 @@ Here is a working live demo :
 ## Screenshots
 
 ### Landing Screen
-![Welcome](https://user-images.githubusercontent.com/31744209/105503357-868c5580-5cd7-11eb-8939-07f3730f2471.png)
+![Welcome](https://user-images.githubusercontent.com/31744209/107847456-cf2dbf00-6dfc-11eb-9834-9b15a1868012.png)
+
 
 
 ### Login Screen
