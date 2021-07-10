@@ -12,22 +12,22 @@ const RegisterScreen = (props) => {
   const { loading, error } = props.auth;
 
   const [values, setValues] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-  const { name, email, password, confirmPassword } = values;
+  const { username, email, password, confirmPassword } = values;
 
-  const handleChange = (name, value) => {
-    setValues({ ...values, [name]: value });
+  const handleChange = (username, value) => {
+    setValues({ ...values, [username]: value });
   };
 
   const clickSubmit = () => {
-    if (email && name && password && confirmPassword) {
+    if (email && username && password && confirmPassword) {
       if (password === confirmPassword) {
         setValues({ ...values, loading: true });
-        const user = { name, email, password };
+        const user = { username, email, password };
         props.register(user);
         setValues({ ...values, loading: false });
       } else {
@@ -58,9 +58,9 @@ const RegisterScreen = (props) => {
           <View style={styles.InputContainer}>
             <TextInput
               style={styles.body}
-              placeholder="Name"
-              onChangeText={(text) => handleChange("name", text)}
-              value={name}
+              placeholder="username"
+              onChangeText={(text) => handleChange("username", text)}
+              value={username}
               placeholderTextColor={AppStyles.color.grey}
               underlineColorAndroid="transparent"
             />

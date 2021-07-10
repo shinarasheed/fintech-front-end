@@ -68,7 +68,6 @@ export const DrawerContent = (props) => {
             ],
             { cancelable: false }
           );
-          // navigation.navigate('Home');
           navigation.closeDrawer();
         }}
       />

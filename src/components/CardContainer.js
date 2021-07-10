@@ -12,9 +12,6 @@ import {
   Feather,
 } from "@expo/vector-icons";
 
-{
-  /* <Feather name="help-circle" size={24} color="black" /> */
-}
 
 const renderIcon = (iconType, iconName) => {
   switch (iconType) {

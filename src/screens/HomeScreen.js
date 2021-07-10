@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, View } from "react-native";
 import call from "react-native-phone-call";
 import Grid from "../components/Grid";
 import LoaderScreen from "../components/LoaderScreen";
@@ -17,8 +17,8 @@ const gridData = [
   {
     navigateTo: "Charges",
     text: "Charges",
-    iconName: "cash-multiple",
-    iconType: "MaterialCommunityIcons",
+    iconName: "payments",
+    iconType: "MaterialIcons",
     iconBackground: AppStyles.color.darkTheme,
   },
   {
@@ -64,7 +64,7 @@ const HomeScreen = (props) => {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, backgroundColor: AppStyles.color.background }}
+      style={{ flex: 1, backgroundColor: AppStyles.color.darkTheme }}
     >
       <Grid
         gridViewItems={gridViewItems}
@@ -93,6 +93,8 @@ const styles = StyleSheet.create({
     height: 100,
   },
   gridContainer: {
-    borderTopLeftRadius: 30,
+    // borderTopLeftRadius: 30,
+    borderWidth: 2,
+    borderColor: "black",
   },
 });

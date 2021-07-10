@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { Root } from "native-base";
 import { connect } from "react-redux";
-import { loadUser } from "../actions/auth";
+import { loadUser, logout } from "../actions/auth";
 import { NavigationContainer } from "@react-navigation/native";
 import { AppStyles } from "../AppStyles";
 import { AuthStack, MainStack } from "../navigations/AppNavigation";
@@ -10,7 +10,6 @@ import LoaderScreen from "../components/LoaderScreen";
 import { getUser } from "../utils/user";
 
 const AuthScreen = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -19,7 +18,6 @@ const AuthScreen = (props) => {
   const fetchUser = async () => {
     setIsLoading(true);
     const user = await getUser();
-    console.log("check if user exists", user);
     props.loadUser(user);
     setIsLoading(false);
   };
@@ -39,6 +37,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => ({
   loadUser: (user) => dispatch(loadUser(user)),
+  logout: () => dispatch(logout()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AuthScreen);
 

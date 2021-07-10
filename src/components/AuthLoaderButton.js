@@ -20,8 +20,6 @@ const styles = StyleSheet.create({
     backgroundColor: AppStyles.color.darkTheme,
     width: "70%",
     flex: 1,
-    // alignItems: "center",
-    // justifyContent: "space-between",
     marginTop: 30,
     padding: 10,
   },

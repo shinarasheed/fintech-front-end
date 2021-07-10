@@ -34,7 +34,9 @@ const TransactionHistoryScreen = (props) => {
   };
   if (!Array.isArray(payment.payment_history)) return <LoaderScreen />;
   return (
-    <Container style={{ backgroundColor: AppStyles.color.background }}>
+    <Container
+      style={{ backgroundColor: AppStyles.color.background, marginBottom: 20 }}
+    >
       <Content style={{ paddingTop: 10 }}>{renderTransactions()}</Content>
     </Container>
   );

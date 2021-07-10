@@ -18,19 +18,19 @@ const LoginScreen = (props) => {
   const { loading, error } = props.auth;
 
   const [values, setValues] = useState({
-    email: "",
+    username: "",
     password: "",
   });
-  const { email, password } = values;
+  const { username, password } = values;
 
   const handleChange = (name, value) => {
     setValues({ ...values, [name]: value });
   };
 
   const clickSubmit = () => {
-    if (email && password) {
+    if (username && password) {
       setValues({ ...values, loading: true });
-      const user = { email, password };
+      const user = { username, password };
       props.login(user);
       setValues({ ...values, loading: false });
     } else {
@@ -58,9 +58,9 @@ const LoginScreen = (props) => {
           <View style={styles.InputContainer}>
             <TextInput
               style={styles.body}
-              placeholder="Email"
-              onChangeText={(text) => handleChange("email", text)}
-              value={email}
+              placeholder="username"
+              onChangeText={(text) => handleChange("username", text)}
+              value={username}
               placeholderTextColor={AppStyles.color.grey}
               underlineColorAndroid="transparent"
             />

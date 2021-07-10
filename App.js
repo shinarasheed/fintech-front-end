@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { Ionicons } from "@expo/vector-icons";

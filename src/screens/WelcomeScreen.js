@@ -11,7 +11,7 @@ const WelcomeScreen = (props) => {
     <Container>
       <Content contentContainerStyle={styles.container}>
         {/* <Image source={require('../../assets/img.png')} style={styles.logo} /> */}
-        <Text style={styles.title}>Welcome </Text>
+        <Text style={styles.title}>E-Pay</Text>
         <View>
           <AuthButton
             onPress={() => props.navigation.navigate("Login")}

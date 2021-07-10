@@ -1,12 +1,6 @@
 import {
   LOGOUT,
-  PAYMENT_HISTORY_ERROR,
-  PAYMENT_ACCOUNT_ERROR,
-  DELETE_PAYMENT_ACCOUNT,
   SET_PAYMENT_HISTORY,
-  SET_PAYMENT_ACCOUNTS,
-  PAYMENT_SUCCESSFUL,
-  ADD_PAYMENT_ACCOUNT,
   SET_LOADER,
   SET_SERVICES,
   SET_CHARGES,
@@ -15,6 +9,8 @@ import {
   PAYMENT_SUCCESS,
   MPESA_STK_SUCCESS,
   MPESA_STK_FAIL,
+  COOP_REQUEST_SUCCESS,
+  COOP_REQUEST_FAIL,
 } from "../actions/types";
 
 const initialState = {
@@ -23,6 +19,7 @@ const initialState = {
   charges: null,
   loading: false,
   error: null,
+  response: null,
 };
 
 export default function (state = initialState, action) {
@@ -50,17 +47,13 @@ export default function (state = initialState, action) {
       };
     case MPESA_STK_SUCCESS:
     case MPESA_STK_FAIL:
+    case COOP_REQUEST_SUCCESS:
+    case COOP_REQUEST_FAIL:
       return {
         ...state,
         loading: false,
+        response: payload,
       };
-    // case ADD_PAYMENT_ACCOUNT:
-    //   return [...state, payload];
-    // case DELETE_PAYMENT_ACCOUNT:
-    //   return state.payment_accounts.filter(
-    //     ({ account_number }) =>
-    //       account_number !== payload.account_number && name !== payload.name
-    //   );
     case PAYMENT_SUCCESS:
       return {
         ...state,
@@ -81,6 +74,7 @@ export default function (state = initialState, action) {
         charges: null,
         loading: false,
         error: null,
+        response: null,
       };
     default:
       return state;

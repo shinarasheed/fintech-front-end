@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet } from "react-native";
 import { Container } from "native-base";
 import { AppStyles } from "../AppStyles";
 import TransactionCard from "../components/TransactionCard";

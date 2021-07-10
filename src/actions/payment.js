@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Alert } from "react-native";
 import { API } from "../config";
 import showToast from "../components/ShowToast";
 import {
@@ -7,10 +8,11 @@ import {
   SET_CHARGES,
   ERROR,
   SET_LOADER,
-  PAYMENT_SUCCESS,
   PAYMENT_FAIL,
   MPESA_STK_SUCCESS,
   MPESA_STK_FAIL,
+  COOP_REQUEST_FAIL,
+  COOP_REQUEST_SUCCESS,
 } from "./types";
 // GET Charges
 export const getCharges = () => async (dispatch) => {
@@ -115,6 +117,7 @@ export const getTransactions = (userId, token) => async (dispatch) => {
       // client never received a response, or request never left
       showToast("Error!");
     } else {
+      
       // anything else
       showToast("Error!");
     }
@@ -151,7 +154,6 @@ export const MpesaStk = (formData, userId, token, navigation) => async (
     );
     //check for error
     if (res.data.errorCode) {
-      console.log(res.data);
       showToast(res.data.errorMessage);
       dispatch({
         type: MPESA_STK_FAIL,
@@ -159,6 +161,7 @@ export const MpesaStk = (formData, userId, token, navigation) => async (
     } else if (res.data.ResponseCode === "0") {
       dispatch({
         type: MPESA_STK_SUCCESS,
+        payload: res.data,
       });
     } else {
       dispatch({
@@ -167,7 +170,6 @@ export const MpesaStk = (formData, userId, token, navigation) => async (
       showToast("Error");
     }
   } catch (err) {
-    console.log("err from client", err);
     if (err.response) {
       // client received an error response (5xx, 4xx)
       showToast(err.response.data);
@@ -184,6 +186,60 @@ export const MpesaStk = (formData, userId, token, navigation) => async (
         msg: err.response ? err.response.errorMessage : "Error",
         status: err.response ? err.response.errorCode : "Error",
       },
+    });
+  }
+};
+
+// Pay Via Co-operative Bank
+export const CoopBankPay = (formData, userId, token, navigation) => async (
+  dispatch
+) => {
+  dispatch({
+    type: SET_LOADER,
+  });
+  try {
+    const config = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const res = await axios.post(
+      `${API}/coop/payment/processPayment/${userId}`,
+      formData,
+      config
+    );
+    // console.log("request sent successfuly", res.data);
+
+    //handle response
+    if (res.data.MessageCode === "0") {
+      dispatch({
+        type: COOP_REQUEST_SUCCESS,
+        payload: res.data,
+      });
+      // Works on both Android and iOS
+      Alert.alert(
+        "",
+        `${res.data.MessageDescription}`,
+        [{ text: "OK", onPress: () => navigation.navigate("Home") }],
+        { cancelable: false }
+      );
+    } else {
+      // console.log(res);
+      dispatch({
+        type: COOP_REQUEST_FAIL,
+        payload: res.data.MessageDescription,
+
+      });
+      showToast(res.data.MessageDescription);
+    }
+  } catch (err) {
+    showToast("ERROR");
+    dispatch({
+      type: COOP_REQUEST_FAIL,
+      payload: "Error",
     });
   }
 };

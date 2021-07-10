@@ -3,10 +3,9 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { CardItem } from "native-base";
 import { Entypo } from "@expo/vector-icons";
 
-const renderImage = (mode) => {
-  // const {iconBackground} = props;
-  switch (mode) {
-    case "M-Pesa":
+const renderLogo = (param) => {
+  switch (param) {
+    case "M-pesa":
       return (
         <Image
           source={require("../../assets/mpesa.png")}
@@ -18,20 +17,6 @@ const renderImage = (mode) => {
         <Image
           source={require("../../assets/co-op.png")}
           style={[{ height: 40, width: 40, margin: 0 }]}
-        />
-      );
-    case "MasterCard":
-      return (
-        <Image
-          source={require("../../assets/mastercard.jpg")}
-          style={[{ height: 40, width: 50, margin: 0 }]}
-        />
-      );
-    case "Visa":
-      return (
-        <Image
-          source={require("../../assets/visa.png")}
-          style={[{ height: 30, width: 40, margin: 0 }]}
         />
       );
 
@@ -49,11 +34,9 @@ const TransactionHistoryCard = (props) => {
       <CardItem>
         <View style={styles.mainContainer}>
           <View>
-            {/* {renderImage(props.data.mode)} */}
-            <Image
-              source={require("../../assets/mpesa.png")}
-              style={[{ height: 40, width: 60, margin: 0 }]}
-            />
+            {props.data.mode === "M-pesa"
+              ? renderLogo(props.data.mode)
+              : renderLogo(props.data.bank_name)}
             <Text style={[{ color: "#696969", marginTop: -3 }]}>...{str2}</Text>
           </View>
         </View>
@@ -66,14 +49,16 @@ const TransactionHistoryCard = (props) => {
         <View style={styles.containerThree}>
           <Text style={[{ color: "black" }]}>Ksh {props.data.amount}</Text>
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            props.navigator(props.data);
-          }}
-          style={styles.containerFour}
-        >
-          <Entypo name="chevron-right" size={35} color="#696969" />
-        </TouchableOpacity>
+        <View style={styles.containerFour}>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigator(props.data);
+            }}
+            // style={styles.containerFour}
+          >
+            <Entypo name="chevron-right" size={35} color="#696969" />
+          </TouchableOpacity>
+        </View>
       </CardItem>
     </View>
   );
@@ -98,8 +83,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   containerThree: {
+    width: "20%",
     height: "100%",
-    alignItems: "center",
+    // alignItems: "center",
+    justifyContent: "flex-start",
   },
   containerFour: {
     width: "20%",

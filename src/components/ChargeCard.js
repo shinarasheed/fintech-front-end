@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-import { AppStyles } from "../AppStyles";
+import { StyleSheet, Text } from "react-native";
 import { Card, CardItem, Left, Right, Badge } from "native-base";
 
 const ChargeCard = (props) => {
@@ -15,7 +14,6 @@ const ChargeCard = (props) => {
           <Badge success>
             <Text style={[{ color: "white" }]}>Ksh {props.data.price}</Text>
           </Badge>
-          {/* <Text style={[{color:'#696969' }]}>Ksh {props.data.amount}</Text> */}
           <Text style={[{ color: "#696969" }]}>{props.data.duration}</Text>
         </Right>
       </CardItem>

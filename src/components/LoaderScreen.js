@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, ImageBackground, View } from "react-native";
+import React from "react";
+import { StyleSheet,View } from "react-native";
 import { AppStyles } from "../AppStyles";
 import Loader from "./Loader";
 

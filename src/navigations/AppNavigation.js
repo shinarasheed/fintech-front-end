@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, LogBox } from "react-native";
-import { Button, H1, H2, H3 } from "native-base";
+import { StyleSheet, LogBox } from "react-native";
+import { Button, H2 } from "native-base";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import ResetPasswordScreen from "../screens/ResetPasswordScreen";
@@ -26,6 +27,7 @@ import {
   MaterialIcons,
   MaterialCommunityIcons,
   Feather,
+  Entypo
 } from "@expo/vector-icons";
 // import DrawerContent from "../screens/DrawerContent";
 
@@ -101,19 +103,19 @@ const config = {
 function HomeStack(props) {
   return (
     <Stack.Navigator
-      initialRouteName="Main"
+      initialRouteName="Home"
       screenOptions={{
         headerTintColor: AppStyles.color.white,
         headerStyle: { backgroundColor: AppStyles.color.darkTheme },
       }}
     >
       <Stack.Screen
-        name="Main"
+        name="Home"
         component={HomeScreen}
         options={({ navigation }) => ({
           headerTitle: () => (
             <H2 style={{ color: "white", marginLeft: -50, marginTop: 35 }}>
-              E-Payment
+              Digital Payment.
             </H2>
           ),
           headerStyle: {
@@ -156,7 +158,7 @@ function HomeStack(props) {
         options={({ route }) => {
           return {
             headerTitle: route.params.item.title,
-            swipeEnabled: true,
+            // swipeEnabled: false,
             transitionSpec: {
               open: config,
               close: config,
@@ -322,20 +324,21 @@ export const MainStack = () => (
       options={({ route }) => ({
         drawerLabel: "Home",
         drawerIcon: (config) => (
-          <MaterialCommunityIcons
-            name="message-text-outline"
+          <Entypo
+            name="home"
             color={AppStyles.color.darkTheme}
             size={20}
           />
         ),
-        // gestureEnabled: getDrawerMode(route),
+        gestureEnabled: getDrawerMode(route),
       })}
     />
 
     <Drawer.Screen
       name="Bill Manager"
       component={BillNavigator}
-      options={{
+      options={() => ({
+        gestureEnabled: false,
         drawerLabel: "Pay",
         drawerIcon: (config) => (
           <FontAwesome5
@@ -344,14 +347,15 @@ export const MainStack = () => (
             size={22}
           />
         ),
-      }}
+      })}
     />
 
     <Drawer.Screen
-      name="Contact"
+      name="Contacts"
       component={ContactNavigator}
       options={{
         drawerLabel: "Contact",
+        gestureEnabled: false,
         drawerIcon: (config) => (
           <Ionicons
             name="ios-people"
@@ -363,4 +367,22 @@ export const MainStack = () => (
     />
   </Drawer.Navigator>
 );
+// const routeName = getFocusedRouteNameFromRoute(route) ?? "Feed";
+function getDrawerMode(route) {
+  // Access the drawer navigator's state using `route.state`
+  // const routeName = route.state
+  //   ? // Get the currently active route name in the drawer navigator
+  //     route.state.routes[route.state.index].name
+  //   : // If state doesn't exist, we need to default to `screen` param if available, or the initial screen
+  //     // In our case, it's "Home" as that's the first screen inside the navigator
+  //     route.params?.screen || "Home";
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
+  switch (routeName) {
+    case "Home":
+      return true;
+    default:
+      return false;
+  }
+}
+
 LogBox.ignoreAllLogs();

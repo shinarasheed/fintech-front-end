@@ -14,8 +14,6 @@ import {
   ERROR,
 } from "./types";
 
-console.log("API", API);
-
 // Load user
 export const loadUser = (user) => (dispatch) => {
   dispatch({
